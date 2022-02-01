@@ -167,10 +167,11 @@ a{
     overflow: hidden;
     transition: var(--transition);
 }
-.header .nav > li:hover .more{
-    opacity: 1;
+.header .nav .moreClicked{
     display: flex;
-}
+    opacity: 4;
+    transition: 1s;
+} 
 @media (max-width:767px){
     .header .nav li a{
         padding: 16px;
@@ -206,10 +207,9 @@ a{
     width: 100%;
     padding: 25px;
     border-bottom: 4px solid var(--main-color);
-    top:calc(100% + 40px);
+    top:100%;
     display: none;
     opacity: 0;
-    transition: var(--transition);
     transition: top var(--transition) , opacity var(--transition) ;
 }
 @media (max-width:767px){
