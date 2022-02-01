@@ -871,5 +871,25 @@
     </div>
     <!-- end footer  -->
 </body>
-
+    <script>
+        let click = document.querySelector(".clickMore");
+        let moreClicked = document.querySelector(".more");
+        click.onclick = function () {
+            moreClicked.classList.toggle("moreClicked")
+        };
+        // start event section count down 
+        countDown = () => {
+            let countSec = document.querySelector(".events .event .count .box .sec");
+            let countmin = document.querySelector(".events .event .count .box .min");
+            countSec.innerHTML -= 1;
+            if (countSec.innerHTML === "0") {
+                countSec.innerHTML = "59"
+                countmin.innerHTML -= 1;
+                if(countmin.innerHTML === "0") {
+                    clearInterval(counter)
+                }
+            }
+        }
+        let counter = setInterval(countDown, 1000)
+    </script>
 </html>
