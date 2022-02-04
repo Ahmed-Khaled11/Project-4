@@ -1096,6 +1096,23 @@ font-size: 50px;
     padding: 10px 0;
     margin: 10px 0;
 }
+.events .container .event .count .box .sec{
+    animation: countDown;
+    animation-duration: 1s;
+    animation-iteration-count:infinite ;
+        }
+        @keyframes countDown {
+            0%{
+            opacity: 1;
+            }
+            50%{
+            opacity: 05;
+            }
+            100%{
+            opacity: 0;
+            }
+        }
+
 .events .container .event .count .box p{
     font-size: 14px;
     margin-top: 20px;
