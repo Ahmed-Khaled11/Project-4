@@ -1095,6 +1095,7 @@ font-size: 50px;
     font-weight: bold;
     padding: 10px 0;
     margin: 10px 0;
+    overflow:hidden;
 }
 .events .container .event .count .box .sec{
     animation: countDown;
@@ -1104,9 +1105,6 @@ font-size: 50px;
         @keyframes countDown {
             0%{
             opacity: 1;
-            }
-            50%{
-            opacity: 0.5;
             }
             100%{
             opacity: 0;
