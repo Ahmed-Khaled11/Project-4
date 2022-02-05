@@ -16,6 +16,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        .count .box .sec{
+            color: red;
+            animation: counDown;
+            animation-direction: 1s;
+            @keyframes countDown {
+                0%{
+                    color:red;
+                }
+                50%{
+                    color:yellow;
+                }
+                100%{
+                    color:blue;
+                }
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -872,6 +890,12 @@
         <p class="copy-right"> &copy; Made With &lt;3 By Ahmed</p>
     </div>
     <!-- end footer  -->
+    <!--Start button Scroll To Top  -->
+    <button class="Scroll-To-Top"
+    style="background-color:#2196f3;color:White;font-weight:bold;font-size:22px;
+    position:fixed; bottom: 10px; right: 10px; border: none; padding:4px 8px; 
+    border-radius: 4px; cursor: pointer; display: none;">^</button>
+    <!--End button Scroll To Top  -->
 </body>
     <script>
         let click = document.querySelector(".clickMore");
@@ -879,20 +903,37 @@
         click.onclick = function () {
             moreClicked.classList.toggle("moreClicked")
         };
+        
         // start event section count down 
         countDown = () => {
             let countSec = document.querySelector(".events .event .count .box .sec");
             let countmin = document.querySelector(".events .event .count .box .min");
             countSec.innerHTML -= 1;
+            console.log()
             if (countSec.innerHTML === "0") {
                 countSec.innerHTML = "59"
                 countmin.innerHTML -= 1;
                 if(countmin.innerHTML === "0") {
                     clearInterval(counter)
                 }
+                
             }
         }
-        let counter = setInterval(countDown, 1000)
+        let counter = setInterval(countDown, 1000);
+        // end event section count down 
+    // Start button Scroll To Top
+    let ScrollToTop = document.querySelector(".Scroll-To-Top");
+    window.onscroll = function() {
+        if(window.scrollY >= 600){
+            ScrollToTop.style.display = "block";
+        }else{
+            ScrollToTop.style.display = "none";
+        }
+    }
+    ScrollToTop.onclick = function() { 
+        window.scrollTo(0,0,"smooth")
+    }
+    // End button Scroll To Top
     </script>
     <!--end JavaSript Event  -->
 </html>
