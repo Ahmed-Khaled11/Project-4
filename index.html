@@ -954,6 +954,11 @@
                 statsCountEle.forEach((span) => statsCounter(span))
             }
             startCounter = true;
+        }else{
+            statsCountEle.forEach((e) =>{
+                e.textContent = "0"
+                startCounter = false
+            })
         }
     })
     function statsCounter(ele) {
