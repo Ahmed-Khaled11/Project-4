@@ -935,7 +935,7 @@
     window.addEventListener("scroll", function(){
         if(window.scrollY >= sectionSkill.offsetTop -50) {
                 mySecSkills.forEach((e) =>{
-                    console.log(e.style.width = e.dataset.width)
+                    e.style.width = e.dataset.width
                 })
             }else{
                 mySecSkills.forEach((e)=>{
@@ -964,7 +964,6 @@
             }
         },1000 / ele.dataset.num) 
     }
-    
     </script>
     <!--end JavaSript Event  -->
 </html>
