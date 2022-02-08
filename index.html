@@ -574,25 +574,25 @@
                 <div class="skill">
                     <h2> HTML <span>95%</span></h2>
                     <div class="progress">
-                        <span style="width: 95%;"></span>
+                        <span data-width="95%" style="width:0%; transition: 0.6s;"></span>
                     </div>
                 </div>
                 <div class="skill">
                     <h2> CSS <span>80%</span></h2>
                     <div class="progress">
-                        <span style="width: 80%;"></span>
+                        <span data-width="80%" style="width:0%; transition: 0.6s;"></span>
                     </div>
                 </div>
                 <div class="skill">
                     <h2> JavaSript <span>60%</span></h2>
                     <div class="progress">
-                        <span style="width: 60%;"></span>
+                        <span data-width="60%" style="width:0%; transition: 0.6s;"></span>
                     </div>
                 </div>
                 <div class="skill">
                     <h2> PHP <span>45%</span></h2>
                     <div class="progress">
-                        <span style="width: 45%;"></span>
+                        <span data-width="45%" style="width:0%; transition: 0.6s;"></span>
                     </div>
                 </div>
             </div>
@@ -643,7 +643,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <!--end works? -->
@@ -774,7 +773,6 @@
                         Top Videos
                         <i class="far fa-share-square"></i>
                     </div>
-
                     <ul>
                         <li>Playing with the DNS <span>05:30</span></li>
                         <li>every thing about virtual hosts <span>02:19</span></li>
@@ -791,7 +789,6 @@
                         <div class="rate">
                             <i class="far fa-thumbs-down"></i>
                             <i class="far fa-thumbs-up"></i> <br><span>22.189 Views</span>
-
                         </div>
                     </div>
                 </div>
@@ -806,22 +803,22 @@
         <div class="container">
             <div class="box">
                 <i class="far fa-user"></i>
-                <span>400</span>
+                <span data-num="400">0</span>
                 <span>Clients</span>
             </div>
             <div class="box">
                 <i class="fas fa-infinity"></i>
-                <span>550</span>
+                <span data-num="550">0</span>
                 <span>Projects</span>
             </div>
             <div class="box">
                 <i class="fas fa-globe-europe"></i>
-                <span>12</span>
+                <span data-num="120">0</span>
                 <span>Countries</span>
             </div>
             <div class="box">
                 <i class="far fa-money-bill-alt"></i>
-                <span>650K</span>
+                <span class="statsCounter" data-num="650">0</span>
                 <span>Money</span>
             </div>
         </div>
@@ -891,7 +888,7 @@
     </div>
     <!-- end footer  -->
     <!--Start button Scroll To Top  -->
-    <button class="Scroll-To-Top"
+    <button class="Scroll-To-Top" title="Scroll To Top"
     style="background-color:#2196f3;color:White;font-weight:bold;font-size:22px;
     position:fixed; bottom: 10px; right: 10px; border: none; padding:4px 8px; 
     border-radius: 4px; cursor: pointer; z-index: 10; display: none;">^</button>
@@ -903,37 +900,71 @@
         click.onclick = function () {
             moreClicked.classList.toggle("moreClicked")
         };
-        
         // start event section count down 
         countDown = () => {
             let countSec = document.querySelector(".events .event .count .box .sec");
             let countmin = document.querySelector(".events .event .count .box .min");
             countSec.innerHTML -= 1;
-            console.log()
             if (countSec.innerHTML === "0") {
                 countSec.innerHTML = "59"
                 countmin.innerHTML -= 1;
                 if(countmin.innerHTML === "0") {
+                countSec.innerHTML = "0"
                     clearInterval(counter)
                 }
-                
             }
-        }
+        };
         let counter = setInterval(countDown, 1000);
         // end event section count down 
     // Start button Scroll To Top
     let ScrollToTop = document.querySelector(".Scroll-To-Top");
-    window.onscroll = function() {
-        if(window.scrollY >= 600){
-            ScrollToTop.style.display = "block";
-        }else{
-            ScrollToTop.style.display = "none";
-        }
-    }
+        window.addEventListener("scroll", function() {
+            if (window.scrollY >= 600) {
+                ScrollToTop.style.display = "block";
+            } else {
+                ScrollToTop.style.display = "none";
+            }
+        })
     ScrollToTop.onclick = function() { 
         window.scrollTo(0,0,"smooth")
-    }
+    };
     // End button Scroll To Top
+    // start skills 
+    let mySecSkills = document.querySelectorAll(".our-skilles .progress span");
+    let sectionSkill = document.querySelector(".our-skilles");
+    window.addEventListener("scroll", function(){
+        if(window.scrollY >= sectionSkill.offsetTop -50) {
+                mySecSkills.forEach((e) =>{
+                    console.log(e.style.width = e.dataset.width)
+                })
+            }else{
+                mySecSkills.forEach((e)=>{
+                    e.style.width = "0%"
+                })
+            }
+        });
+    // End skills 
+    // Start Awesome Stats 
+    let ourStats = document.querySelector("#stats");
+    let statsCountEle = document.querySelectorAll("#stats .container .box [data-num]");
+    let startCounter = false;
+    addEventListener("scroll", function(){
+        if (window.scrollY >= ourStats.offsetTop -50) {
+            if(startCounter==false){
+                statsCountEle.forEach((span) => statsCounter(span))
+            }
+            startCounter = true;
+        }
+    })
+    function statsCounter(ele) {
+        let statsCount = setInterval(()=>{
+            ele.textContent++
+            if(ele.textContent == ele.dataset.num) {
+                clearInterval(statsCount)
+            }
+        },1000 / ele.dataset.num) 
+    }
+    
     </script>
     <!--end JavaSript Event  -->
 </html>
