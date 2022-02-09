@@ -167,11 +167,7 @@ a{
     overflow: hidden;
     transition: var(--transition);
 }
-.header .nav .moreClicked{
-    display: flex;
-    opacity: 4;
-    transition: 1s;
-} 
+
 @media (max-width:767px){
     .header .nav li a{
         padding: 16px;
@@ -199,7 +195,6 @@ a{
 /* start more  */
 .header .more{
     position: absolute;
-    z-index: 10;
     background-color: #fff;
     display: flex;
     gap: 50px;
@@ -207,10 +202,15 @@ a{
     width: 100%;
     padding: 25px;
     border-bottom: 4px solid var(--main-color);
-    top:100%;
-    display: none;
+    top: -500px;
+    z-index: 10;
     opacity: 0;
-    transition: top var(--transition) , opacity var(--transition) ;
+    transition: var(--transition);
+}
+.header .nav .moreClicked{
+    top:100%;
+    opacity:5;
+    transition: var(--transition);
 }
 @media (max-width:767px){
     .header .more {
@@ -1095,7 +1095,6 @@ font-size: 50px;
     font-weight: bold;
     padding: 10px 0;
     margin: 10px 0;
-    overflow:hidden;
 }
 .events .container .event .count .box .sec{
     animation: countDown;
