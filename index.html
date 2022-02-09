@@ -915,7 +915,7 @@
             }
         };
         let counter = setInterval(countDown, 1000);
-        // end event section count down 
+    // end event section count down 
     // Start button Scroll To Top
     let ScrollToTop = document.querySelector(".Scroll-To-Top");
         window.addEventListener("scroll", function() {
@@ -933,28 +933,28 @@
     let sectionSkill = document.querySelector(".our-skilles");
     let mySecSkills = document.querySelectorAll(".our-skilles .progress span");
     let sectionSkillSpan = document.querySelectorAll(".our-skilles .skill [data-num]");
-    ourSkillsCounter = false
+    ourSkillsCounter = false;
     window.addEventListener("scroll", function(){
         if(window.scrollY >= sectionSkill.offsetTop -50) {
             if(ourSkillsCounter == false) {
-                sectionSkillSpan.forEach((e) => starsCounter(e)
-                )}
-                ourSkillsCounter = true
+                sectionSkillSpan.forEach((e) => startCounter(e))
+                ourSkillsCounter = true;
+                }
                 mySecSkills.forEach((e) =>{
-                    e.style.width = e.dataset.width
+                    e.style.width = e.dataset.width;
                 })
             }else{
-                    mySecSkills.forEach((e) => {
-                        e.style.width = "0%"
-                        
-                })
+                mySecSkills.forEach((e) => {
+                    e.style.width = "0%";
+                    
                 sectionSkillSpan.forEach((e) => {
                     e.textContent = "0"
-                    ourSkillsCounter= false
-                })
+                    ourSkillsCounter= false;
+        })
+        })
             }
-        }
-        );
+    }
+);
     // End skills 
     // Start Awesome Stats 
     let ourStats = document.querySelector("#stats");
@@ -963,9 +963,9 @@
     addEventListener("scroll", function(){
         if (window.scrollY >= ourStats.offsetTop -50) {
             if(stopCounter==false){
-                statsCountEle.forEach((span) => starsCounter(span))
+                statsCountEle.forEach((span) => startCounter(span))
+                stopCounter = true;
             }
-            stopCounter = true;
         }else{
             statsCountEle.forEach((e) =>{
                 e.textContent = "0"
@@ -973,13 +973,13 @@
             })
         }
     })
-    function starsCounter(ele) {
+    function startCounter(ele) {
         let statsCount = setInterval(()=>{
             ele.textContent++
             if(ele.textContent == ele.dataset.num) {
                 clearInterval(statsCount)
             }
-        },1000 / ele.dataset.num) 
+        },1500 / ele.dataset.num) 
     }
     </script>
     <!--end JavaSript Event  -->
