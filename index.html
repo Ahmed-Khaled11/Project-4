@@ -572,25 +572,25 @@
             <img src="./images/skilles-1.svg" alt="">
             <div class="skilles">
                 <div class="skill">
-                    <h2> HTML <span>95%</span></h2>
+                    <h2> HTML <span data-num="95">0</span></h2>
                     <div class="progress">
                         <span data-width="95%" style="width:0%; transition: 0.6s;"></span>
                     </div>
                 </div>
                 <div class="skill">
-                    <h2> CSS <span>80%</span></h2>
+                    <h2 > CSS <span data-num="80">0</span></h2>
                     <div class="progress">
                         <span data-width="80%" style="width:0%; transition: 0.6s;"></span>
                     </div>
                 </div>
                 <div class="skill">
-                    <h2> JavaSript <span>60%</span></h2>
+                    <h2> JavaSript <span data-num="60">0</span></h2>
                     <div class="progress">
                         <span data-width="60%" style="width:0%; transition: 0.6s;"></span>
                     </div>
                 </div>
                 <div class="skill">
-                    <h2> PHP <span>45%</span></h2>
+                    <h2> PHP <span data-num="45">0</span></h2>
                     <div class="progress">
                         <span data-width="45%" style="width:0%; transition: 0.6s;"></span>
                     </div>
@@ -803,22 +803,22 @@
         <div class="container">
             <div class="box">
                 <i class="far fa-user"></i>
-                <span data-num="400">0</span>
+                <span data-num="400"></span>
                 <span>Clients</span>
             </div>
             <div class="box">
                 <i class="fas fa-infinity"></i>
-                <span data-num="550">0</span>
+                <span data-num="550"></span>
                 <span>Projects</span>
             </div>
             <div class="box">
                 <i class="fas fa-globe-europe"></i>
-                <span data-num="120">0</span>
+                <span data-num="120"></span>
                 <span>Countries</span>
             </div>
             <div class="box">
                 <i class="far fa-money-bill-alt"></i>
-                <span class="statsCounter" data-num="650">0</span>
+                <span class="statsCounter" data-num="650"></span>
                 <span>Money</span>
             </div>
         </div>
@@ -930,38 +930,50 @@
     };
     // End button Scroll To Top
     // start skills 
-    let mySecSkills = document.querySelectorAll(".our-skilles .progress span");
     let sectionSkill = document.querySelector(".our-skilles");
+    let mySecSkills = document.querySelectorAll(".our-skilles .progress span");
+    let sectionSkillSpan = document.querySelectorAll(".our-skilles .skill [data-num]");
+    ourSkillsCounter = false
     window.addEventListener("scroll", function(){
         if(window.scrollY >= sectionSkill.offsetTop -50) {
+            if(ourSkillsCounter == false) {
+                sectionSkillSpan.forEach((e) => starsCounter(e)
+                )}
+                ourSkillsCounter = true
                 mySecSkills.forEach((e) =>{
                     e.style.width = e.dataset.width
                 })
             }else{
-                mySecSkills.forEach((e)=>{
-                    e.style.width = "0%"
+                    mySecSkills.forEach((e) => {
+                        e.style.width = "0%"
+                        
+                })
+                sectionSkillSpan.forEach((e) => {
+                    e.textContent = "0"
+                    ourSkillsCounter= false
                 })
             }
-        });
+        }
+        );
     // End skills 
     // Start Awesome Stats 
     let ourStats = document.querySelector("#stats");
     let statsCountEle = document.querySelectorAll("#stats .container .box [data-num]");
-    let startCounter = false;
+    let stopCounter = false;
     addEventListener("scroll", function(){
         if (window.scrollY >= ourStats.offsetTop -50) {
-            if(startCounter==false){
-                statsCountEle.forEach((span) => statsCounter(span))
+            if(stopCounter==false){
+                statsCountEle.forEach((span) => starsCounter(span))
             }
-            startCounter = true;
+            stopCounter = true;
         }else{
             statsCountEle.forEach((e) =>{
                 e.textContent = "0"
-                startCounter = false
+                stopCounter = false
             })
         }
     })
-    function statsCounter(ele) {
+    function starsCounter(ele) {
         let statsCount = setInterval(()=>{
             ele.textContent++
             if(ele.textContent == ele.dataset.num) {
